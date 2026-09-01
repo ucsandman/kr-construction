@@ -204,6 +204,55 @@
     letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:16px;
   }
 
+  /* ---------- estimate form ---------- */
+  .est-form{
+    max-width:680px;margin:56px auto 0;text-align:left;
+    background:var(--coal-2);border:2px solid var(--steel);padding:34px 30px;
+  }
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:640px){.est-grid{grid-template-columns:1fr}}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field.full{grid-column:1/-1}
+  .field label{
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);
+  }
+  .field input,.field select,.field textarea{
+    font-family:'Barlow',sans-serif;font-size:16px;color:#fff;
+    background:var(--coal);border:2px solid var(--steel);padding:13px 14px;
+    border-radius:0;appearance:none;-webkit-appearance:none;
+  }
+  .field select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5C518' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;
+  }
+  .field textarea{min-height:110px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--yellow);
+  }
+  .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.35)}
+  .est-submit{
+    grid-column:1/-1;margin-top:6px;
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;
+    letter-spacing:.14em;text-transform:uppercase;
+    background:var(--yellow);color:var(--coal);border:none;padding:17px 30px;cursor:pointer;
+  }
+  .est-submit:hover{background:#fff}
+  .est-submit:disabled{opacity:.6;cursor:wait}
+  .est-status{
+    grid-column:1/-1;font-family:'Barlow Condensed',sans-serif;font-weight:600;
+    font-size:16px;letter-spacing:.08em;text-transform:uppercase;text-align:center;
+  }
+  .est-status.ok{color:var(--yellow)}
+  .est-status.err{color:#FF7A59}
+  .honey{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+  .contact .or{
+    font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14px;
+    letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);
+    margin:44px 0 0;display:flex;align-items:center;gap:16px;justify-content:center;
+  }
+  .contact .or::before,.contact .or::after{content:"";width:60px;height:1px;background:var(--steel)}
+
   footer{background:var(--coal);color:rgba(255,255,255,.5);border-top:1px solid var(--steel)}
   .foot-in{
     max-width:1100px;margin:0 auto;padding:22px 24px;
@@ -333,11 +382,110 @@
 <section id="contact" class="contact">
   <div class="wrap">
     <h2>Got a project?<br><span class="hl">Let's talk.</span></h2>
-    <p>Text a few photos of the space and what you're thinking, or call and walk us through it. You'll get a real number, fast.</p>
+    <p>Tell us what you're thinking and when works for a walkthrough. We'll text you back to lock in a time — and you'll get a real number, fast.</p>
+
+    <form class="est-form" id="estimate-form" novalidate>
+      <div class="est-grid">
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required placeholder="(555) 555-5555">
+        </div>
+        <div class="field">
+          <label for="f-city">City / Neighborhood</label>
+          <input id="f-city" name="city" type="text" autocomplete="address-level2" placeholder="Where's the project?">
+        </div>
+        <div class="field">
+          <label for="f-type">Project type</label>
+          <select id="f-type" name="project_type">
+            <option>Kitchen or bath remodel</option>
+            <option>Deck / outdoor living</option>
+            <option>Basement finishing</option>
+            <option>General construction / repair</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="f-details">Tell us about it</label>
+          <textarea id="f-details" name="details" placeholder="What are we building? Rough size, what's there now, anything else worth knowing."></textarea>
+        </div>
+        <div class="field">
+          <label for="f-days">Best days for a walkthrough</label>
+          <select id="f-days" name="preferred_days">
+            <option>Weekdays</option>
+            <option>Weekends</option>
+            <option>Either works</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-time">Best time</label>
+          <select id="f-time" name="preferred_time">
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Evening</option>
+            <option>Any time</option>
+          </select>
+        </div>
+        <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="est-submit" type="submit">Request my free estimate</button>
+        <p class="est-status" id="est-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <p class="or">or just call</p>
     <a class="phone" href="tel:+10000000000">(000) 000-0000</a>
     <p class="sub">Call or text · Free estimate · 7 days a week</p>
   </div>
 </section>
+
+<script>
+(function(){
+  var form=document.getElementById('estimate-form');
+  var status=document.getElementById('est-status');
+  var btn=form.querySelector('.est-submit');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=form.name.value.trim(),phone=form.phone.value.trim();
+    if(!name||!phone){
+      status.textContent='Add your name and phone so we can text you back.';
+      status.className='est-status err';
+      return;
+    }
+    btn.disabled=true;
+    status.textContent='Sending…';
+    status.className='est-status';
+    var data={
+      name:name,phone:phone,
+      city:form.city.value.trim(),
+      project_type:form.project_type.value,
+      details:form.details.value.trim(),
+      preferred_days:form.preferred_days.value,
+      preferred_time:form.preferred_time.value,
+      _honey:form._honey.value,
+      _subject:'New estimate request — '+name,
+      _template:'table',
+      _captcha:'false'
+    };
+    fetch('https://formsubmit.co/ajax/sandman.uc@gmail.com',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(data)
+    }).then(function(r){return r.json();}).then(function(res){
+      if(res.success==='true'||res.success===true){
+        form.reset();
+        status.textContent="Got it — we'll text you to set up a time.";
+        status.className='est-status ok';
+      }else{throw new Error(res.message||'send failed');}
+    }).catch(function(){
+      status.textContent="Something went wrong — call or text us instead.";
+      status.className='est-status err';
+    }).finally(function(){btn.disabled=false;});
+  });
+})();
+</script>
 
 <footer>
   <div class="foot-in">
