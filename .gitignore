@@ -1,5 +1,6 @@
 .dashclaw-local/
 .offlocal/
 .playwright-mcp/
+photos/
 .vercel/
 .env
