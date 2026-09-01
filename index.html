@@ -5,6 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KR Construction and Remodeling, LLC — Cincinnati, OH</title>
 <meta name="description" content="KR Construction and Remodeling, LLC — kitchens, baths, basements, decks, fences and outdoor living in Cincinnati and Southwest Ohio. Licensed and insured. Call or text (937) 389-5007 for a free estimate.">
+<meta property="og:title" content="KR Construction and Remodeling, LLC">
+<meta property="og:description" content="Kitchens, baths, basements, decks, fences and outdoor living in Cincinnati &amp; Southwest Ohio. Licensed and insured. Call or text (937) 389-5007 for a free estimate.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kr-construction.vercel.app/">
+<meta property="og:image" content="https://kr-construction.vercel.app/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "KR Construction and Remodeling, LLC",
+  "telephone": "+19373895007",
+  "url": "https://kr-construction.vercel.app/",
+  "image": "https://kr-construction.vercel.app/assets/og-cover.jpg",
+  "priceRange": "$$",
+  "areaServed": [
+    { "@type": "City", "name": "Cincinnati" },
+    { "@type": "AdministrativeArea", "name": "Southwest Ohio" }
+  ],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kitchen and bath remodeling" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Decks and outdoor living" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Basement finishing" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "General construction and repair" } }
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23181A1B'/%3E%3Crect y='26' width='32' height='6' fill='%23F5C518'/%3E%3Ctext x='16' y='21' font-family='Arial,sans-serif' font-size='13' font-weight='bold' fill='%23F5C518' text-anchor='middle'%3EKR%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,8 +282,64 @@
     letter-spacing:.14em;text-transform:uppercase;
   }
 
+  /* ---------- sticky mobile call/text bar ---------- */
+  .thumb-bar{
+    position:fixed;bottom:0;left:0;right:0;z-index:50;
+    display:none;grid-template-columns:1fr 1fr;
+    background:var(--coal);padding-bottom:env(safe-area-inset-bottom);
+    transition:transform .2s ease;
+  }
+  .thumb-bar::before{
+    content:"";position:absolute;top:-6px;left:0;right:0;height:6px;
+    background:repeating-linear-gradient(-45deg,var(--yellow) 0 14px,var(--coal) 14px 28px);
+  }
+  .thumb-bar a{
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;
+    letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+    text-align:center;padding:18px 10px;
+  }
+  .thumb-bar .tb-call{background:var(--yellow);color:var(--coal)}
+  .thumb-bar .tb-text{background:var(--coal-2);color:#fff;border-left:1px solid var(--steel)}
+  .thumb-bar.hide{transform:translateY(110%)}
+  @media(max-width:700px){
+    .thumb-bar{display:grid}
+    body{padding-bottom:76px}
+  }
+
+  /* ---------- form SMS escape hatch ---------- */
+  .est-sms{
+    grid-column:1/-1;text-align:center;text-decoration:none;
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;
+    letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);
+    border:2px solid var(--steel);padding:13px 20px;margin-top:2px;
+  }
+  .est-sms:hover{border-color:var(--yellow);color:var(--yellow)}
+
+  /* ---------- lightbox ---------- */
+  .lb{
+    position:fixed;inset:0;z-index:100;background:rgba(12,13,14,.96);
+    display:none;align-items:center;justify-content:center;
+  }
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:86vh;object-fit:contain;display:block}
+  .lb button{
+    position:absolute;background:none;border:2px solid var(--steel);color:#fff;
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;
+    width:48px;height:48px;cursor:pointer;
+  }
+  .lb button:hover,.lb button:focus-visible{border-color:var(--yellow);color:var(--yellow)}
+  .lb .lb-close{top:16px;right:16px}
+  .lb .lb-prev{left:12px;top:50%;transform:translateY(-50%)}
+  .lb .lb-next{right:12px;top:50%;transform:translateY(-50%)}
+  .lb figcaption{
+    position:absolute;bottom:18px;left:0;right:0;text-align:center;
+    font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);
+  }
+  .plate{cursor:pointer}
+
   :focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.thumb-bar{transition:none}}
 </style>
 </head>
 <body>
@@ -330,28 +415,28 @@
       <span class="tag" style="color:rgba(255,255,255,.6)">Photos</span>
     </div>
     <div class="work-grid">
-      <figure class="plate">
-        <div class="ph"><img src="assets/work/backyard-patio.jpg" alt="Finished backyard with new privacy fence, paver patio, and fire pit area" loading="lazy"></div>
+      <figure class="plate" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/backyard-patio.webp" type="image/webp"><img src="assets/work/backyard-patio.jpg" alt="Finished backyard with new privacy fence, paver patio, and fire pit area" width="1320" height="990" loading="lazy"></picture></div>
         <figcaption><b>Backyard Overhaul</b><span>Fence + Patio</span></figcaption>
       </figure>
-      <figure class="plate">
-        <div class="ph"><img src="assets/work/deck-stairs.jpg" alt="New pressure-treated deck stairs and railing under construction" loading="lazy"></div>
+      <figure class="plate" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/deck-stairs.webp" type="image/webp"><img src="assets/work/deck-stairs.jpg" alt="New pressure-treated deck stairs and railing under construction" width="1050" height="1400" loading="lazy"></picture></div>
         <figcaption><b>Deck &amp; Stairs</b><span>Rebuild</span></figcaption>
       </figure>
-      <figure class="plate">
-        <div class="ph"><img src="assets/work/fence-finished.jpg" alt="Completed wood privacy fence around a backyard at sunset" loading="lazy"></div>
+      <figure class="plate" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/fence-finished.webp" type="image/webp"><img src="assets/work/fence-finished.jpg" alt="Completed wood privacy fence around a backyard at sunset" width="1320" height="990" loading="lazy"></picture></div>
         <figcaption><b>Privacy Fence</b><span>Full Perimeter</span></figcaption>
       </figure>
-      <figure class="plate">
-        <div class="ph"><img src="assets/work/fence-sideyard.jpg" alt="New privacy fence line running between two houses" loading="lazy"></div>
+      <figure class="plate" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/fence-sideyard.webp" type="image/webp"><img src="assets/work/fence-sideyard.jpg" alt="New privacy fence line running between two houses" width="1050" height="1400" loading="lazy"></picture></div>
         <figcaption><b>Privacy Fence</b><span>Side Yard</span></figcaption>
       </figure>
-      <figure class="plate">
-        <div class="ph"><img src="assets/work/fence-build.jpg" alt="Privacy fence going up with lumber staged in the yard" loading="lazy"></div>
+      <figure class="plate" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/fence-build.webp" type="image/webp"><img src="assets/work/fence-build.jpg" alt="Privacy fence going up with lumber staged in the yard" width="1320" height="990" loading="lazy"></picture></div>
         <figcaption><b>Fence Build</b><span>In Progress</span></figcaption>
       </figure>
-      <figure class="plate">
-        <div class="ph"><img src="assets/work/fence-backyard.jpg" alt="Long straight run of finished privacy fence in a green backyard" loading="lazy"></div>
+      <figure class="plate" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/fence-backyard.webp" type="image/webp"><img src="assets/work/fence-backyard.jpg" alt="Long straight run of finished privacy fence in a green backyard" width="1050" height="1400" loading="lazy"></picture></div>
         <figcaption><b>Privacy Fence</b><span>Backyard</span></figcaption>
       </figure>
     </div>
@@ -435,6 +520,7 @@
         </div>
         <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="est-submit" type="submit">Request my free estimate</button>
+        <a class="est-sms" href="sms:+19373895007?&body=Hi%20Kam%2C%20I%27ve%20got%20a%20project%20I%27d%20like%20an%20estimate%20on%20-%20">Skip the form — text us a photo instead</a>
         <p class="est-status" id="est-status" role="status" aria-live="polite"></p>
       </div>
     </form>
@@ -444,6 +530,19 @@
     <p class="sub">Call or text · Free estimate · Serving Cincinnati &amp; Southwest Ohio</p>
   </div>
 </section>
+
+<div class="thumb-bar" id="thumb-bar">
+  <a class="tb-call" href="tel:+19373895007">Call Now</a>
+  <a class="tb-text" href="sms:+19373895007?&body=Hi%20Kam%2C%20I%27ve%20got%20a%20project%20I%27d%20like%20an%20estimate%20on%20-%20">Text a Photo</a>
+</div>
+
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" aria-label="Close">✕</button>
+  <button class="lb-prev" aria-label="Previous photo">‹</button>
+  <button class="lb-next" aria-label="Next photo">›</button>
+  <img alt="">
+  <figcaption></figcaption>
+</div>
 
 <script>
 (function(){
@@ -488,6 +587,69 @@
       status.className='est-status err';
     }).finally(function(){btn.disabled=false;});
   });
+})();
+
+/* sticky bar: hide while the form's own actions are on screen */
+(function(){
+  var bar=document.getElementById('thumb-bar');
+  var target=document.querySelector('.est-submit');
+  if(!bar||!target||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(function(entries){
+    bar.classList.toggle('hide',entries[0].isIntersecting);
+  }).observe(target);
+})();
+
+/* gallery lightbox */
+(function(){
+  var lb=document.getElementById('lightbox');
+  var img=lb.querySelector('img');
+  var cap=lb.querySelector('figcaption');
+  var plates=Array.prototype.slice.call(document.querySelectorAll('.work-grid .plate'));
+  var idx=0,lastFocus=null;
+  function show(i){
+    idx=(i+plates.length)%plates.length;
+    var p=plates[idx];
+    img.src=p.querySelector('img').src;
+    img.alt=p.querySelector('img').alt;
+    var b=p.querySelector('figcaption b'),s=p.querySelector('figcaption span');
+    cap.textContent=(b?b.textContent:'')+(s?' — '+s.textContent:'');
+  }
+  function open(i){
+    lastFocus=document.activeElement;
+    show(i);
+    lb.classList.add('open');
+    document.body.style.overflow='hidden';
+    lb.querySelector('.lb-close').focus();
+  }
+  function close(){
+    lb.classList.remove('open');
+    document.body.style.overflow='';
+    if(lastFocus)lastFocus.focus();
+  }
+  plates.forEach(function(p,i){
+    p.addEventListener('click',function(){open(i);});
+    p.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();open(i);}
+    });
+  });
+  lb.querySelector('.lb-close').addEventListener('click',close);
+  lb.querySelector('.lb-prev').addEventListener('click',function(){show(idx-1);});
+  lb.querySelector('.lb-next').addEventListener('click',function(){show(idx+1);});
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    if(e.key==='ArrowLeft')show(idx-1);
+    if(e.key==='ArrowRight')show(idx+1);
+  });
+  var tx=null;
+  lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(tx===null)return;
+    var dx=e.changedTouches[0].clientX-tx;
+    if(dx>40)show(idx-1);else if(dx<-40)show(idx+1);
+    tx=null;
+  },{passive:true});
 })();
 </script>
 
