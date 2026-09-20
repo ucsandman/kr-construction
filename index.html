@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KR Construction and Remodeling, LLC — Cincinnati, OH</title>
-<meta name="description" content="KR Construction and Remodeling, LLC — kitchens, baths, basements, decks, fences, landscaping and outdoor living in Cincinnati and Southwest Ohio. Licensed and insured. Call or text (937) 389-5007 for a free estimate.">
+<meta name="description" content="KR Construction and Remodeling, LLC — kitchens, baths, basements, decks, fences, foundation grading and drainage fixes in Cincinnati and Southwest Ohio. Licensed and insured. Call or text (937) 389-5007 for a free estimate.">
+<link rel="canonical" href="https://krconstruction-llc.com/">
 <meta property="og:title" content="KR Construction and Remodeling, LLC">
 <meta property="og:description" content="Kitchens, baths, basements, decks, fences and outdoor living in Cincinnati &amp; Southwest Ohio. Licensed and insured. Call or text (937) 389-5007 for a free estimate.">
 <meta property="og:type" content="website">
@@ -13,6 +14,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://krconstruction-llc.com/assets/og-cover.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,6 +35,7 @@
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Decks and outdoor living" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Basement finishing" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landscaping and grading" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Foundation grading and drainage correction" } },
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "General construction and repair" } }
   ]
 }
@@ -163,7 +166,32 @@
   }
   .svc p{margin-top:12px;color:var(--ink-soft);font-size:15.5px}
   .svc .bar{width:44px;height:8px;background:var(--yellow);margin-bottom:18px}
+  .svc p a{color:var(--ink);font-weight:600;text-decoration:none;box-shadow:inset 0 -7px 0 var(--yellow)}
+  .svc p a:hover{box-shadow:inset 0 -20px 0 var(--yellow)}
   @media(min-width:761px){.svc-wide{grid-column:1/-1}}
+
+  /* ---------- drainage spotlight ---------- */
+  .drain{background:#fff;border-top:2px solid var(--coal);border-bottom:2px solid var(--coal)}
+  .drain-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media(max-width:880px){.drain-grid{grid-template-columns:1fr;gap:36px}}
+  .drain .tag{color:var(--ink-soft);margin-bottom:20px}
+  .drain h2{
+    font-family:'Anton',sans-serif;font-weight:400;
+    font-size:clamp(32px,4.6vw,50px);letter-spacing:.01em;text-transform:uppercase;line-height:1.02;
+  }
+  .drain h2 .hl{color:var(--ink);background:var(--yellow);padding:0 6px}
+  .drain p{color:var(--ink-soft);margin-top:18px;max-width:54ch}
+  .drain-steps{list-style:none;margin-top:28px;border-top:1px solid var(--hairline)}
+  .drain-steps li{
+    position:relative;padding:13px 0 13px 34px;border-bottom:1px solid var(--hairline);
+    font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:17px;
+    letter-spacing:.06em;text-transform:uppercase;
+  }
+  .drain-steps li::before{content:"";position:absolute;left:0;top:20px;width:20px;height:8px;background:var(--yellow)}
+  .drain .btn{margin-top:30px}
+  .drain .btn-primary{border:2px solid var(--coal)}
+  .drain-shot{box-shadow:10px 10px 0 var(--yellow);border-color:var(--coal);margin-right:10px}
+  .drain-shot figcaption{border-top-color:var(--coal);color:#fff}
 
   /* ---------- work ---------- */
   .work{background:var(--coal);color:#fff}
@@ -353,6 +381,7 @@
     <a class="brand" href="#"><img src="assets/logo-mark.png" alt="KR Construction and Remodeling logo">KR Construction &amp; Remodeling</a>
     <nav class="main" aria-label="Main">
       <a href="#services">Services</a>
+      <a href="#drainage">Drainage</a>
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -405,14 +434,38 @@
       </div>
       <div class="svc">
         <div class="bar"></div>
-        <h3>Landscaping &amp; Grading</h3>
-        <p>Yard grading, drainage fixes, sod and seed, beds, and cleanups that finish the job right.</p>
+        <h3>Grading &amp; Drainage</h3>
+        <p>Foundation grading that moves water away from the house, plus yard regrades, sod and seed, beds, and cleanups. <a href="#drainage">See how it works</a>.</p>
       </div>
       <div class="svc svc-wide">
         <div class="bar"></div>
         <h3>General Construction</h3>
         <p>Repairs, drywall, trim, doors, and the punch-list jobs other contractors won't pick up.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="drainage" class="drain">
+  <div class="wrap drain-grid">
+    <div>
+      <span class="tag">Foundation Grading</span>
+      <h2>Water in the basement<br>starts <span class="hl">outside it.</span></h2>
+      <p>When the dirt around your foundation sits flat, or worse, pitches back toward the house, every hard rain runs down the block and looks for a way in. Sealing the inside treats the symptom. Fixing the grade sends the water somewhere else.</p>
+      <ul class="drain-steps">
+        <li>Pull the soil back off the block</li>
+        <li>Cut a slope that carries water away</li>
+        <li>Bring in fill and compact it</li>
+        <li>Seed and straw so the new grade stays put</li>
+      </ul>
+    </div>
+    <div>
+      <figure class="plate drain-shot" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/grading-front.webp" type="image/webp"><img src="assets/work/grading-front.jpg" alt="Front yard regraded to slope away from a brick house foundation, freshly seeded and covered in straw" width="1320" height="990" loading="lazy"></picture></div>
+        <figcaption><b>Regraded to Drain</b><span>Sloped Away · Seeded</span></figcaption>
+      </figure>
+      <p>Most of these run a day or two and cost a fraction of an interior drain system. Damp basement wall, soggy strip along the house, mulch washing onto the patio every storm: text us a photo and we'll tell you what it needs.</p>
+      <a class="btn btn-primary" href="#contact">Get a free drainage estimate</a>
     </div>
   </div>
 </section>
@@ -447,6 +500,18 @@
       <figure class="plate" role="button" tabindex="0">
         <div class="ph"><picture><source srcset="assets/work/fence-backyard.webp" type="image/webp"><img src="assets/work/fence-backyard.jpg" alt="175 feet of finished backyard privacy fence, completed in 3 days" width="1050" height="1400" loading="lazy"></picture></div>
         <figcaption><b>175 Ft Privacy Fence</b><span>Backyard · 3 Days</span></figcaption>
+      </figure>
+      <figure class="plate" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/grading-foundation.webp" type="image/webp"><img src="assets/work/grading-foundation.jpg" alt="Fresh grade cut away from the foundation of a brick house, seeded and strawed across the front yard" width="1320" height="990" loading="lazy"></picture></div>
+        <figcaption><b>Grade Cut Off the Block</b><span>Front · Seeded</span></figcaption>
+      </figure>
+      <figure class="plate" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/grading-sideyard.webp" type="image/webp"><img src="assets/work/grading-sideyard.jpg" alt="Side yard regraded along a brick foundation with a stone curb edge, pitched to carry runoff to daylight" width="1320" height="990" loading="lazy"></picture></div>
+        <figcaption><b>Side Yard Runoff Fix</b><span>Pitched to Daylight</span></figcaption>
+      </figure>
+      <figure class="plate" role="button" tabindex="0">
+        <div class="ph"><picture><source srcset="assets/work/grading-backyard.webp" type="image/webp"><img src="assets/work/grading-backyard.jpg" alt="Back of a brick house with the soil regraded away from the foundation wall, seeded and covered in straw" width="1320" height="990" loading="lazy"></picture></div>
+        <figcaption><b>Back Wall Regrade</b><span>Seeded + Strawed</span></figcaption>
       </figure>
     </div>
   </div>
@@ -503,7 +568,8 @@
             <option>Kitchen or bath remodel</option>
             <option>Deck / outdoor living</option>
             <option>Basement finishing</option>
-            <option>Landscaping / grading</option>
+            <option>Foundation grading / drainage</option>
+            <option>Landscaping / yard grading</option>
             <option>General construction / repair</option>
             <option>Not sure yet</option>
           </select>
@@ -615,7 +681,7 @@
   var lb=document.getElementById('lightbox');
   var img=lb.querySelector('img');
   var cap=lb.querySelector('figcaption');
-  var plates=Array.prototype.slice.call(document.querySelectorAll('.work-grid .plate'));
+  var plates=Array.prototype.slice.call(document.querySelectorAll('.plate'));
   var idx=0,lastFocus=null;
   function show(i){
     idx=(i+plates.length)%plates.length;
